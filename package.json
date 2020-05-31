@@ -1,0 +1,29 @@
+{
+  "name": "commander",
+  "version": "0.0.1",
+  "description": "An Eris based command framework, heavily inspired by Discord.py",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "lint": "eslint src --ext .ts --fix", 
+    "test": "jest --config jest.config.js"
+  },
+  "repository": "https://github.com/NinoDiscord/Commander",
+  "bugs": "https://github.com/NinoDiscord/Commander/issues",
+  "homepage": "https://github.com/NinoDiscord/Commander",
+  "author": "dondish <odedshapira1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "eris": "^0.13.1",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/parser": "^3.0.2",
+    "eslint": "^7.1.0",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.3"
+  }
+}
