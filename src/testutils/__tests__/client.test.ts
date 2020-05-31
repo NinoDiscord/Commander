@@ -4,7 +4,12 @@ import { newClient } from '..';
 describe('TestUtils - Client', () => {
   let client: Client;
 
-  it('it should be of type client', () => {
+  it('it should not connect automatically', () => {
+    client = newClient();
+    expect(client.startTime).toBe(0);
+  });
+
+  it('it should be of type Client', () => {
     client = newClient();
     expect(client).toBeInstanceOf(Client);
     expect(client.token).toBe('');
