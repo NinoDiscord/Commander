@@ -36,8 +36,8 @@ export function newClient(client: Partial<Client> = {}, token: string = '', clie
  */
 export const defaultUserData = {
   id: '80351110224678912',
-  username: 'test',
-  discriminator: '1234',
+  username: 'Nelly',
+  discriminator: '1337',
   avatar: '8342729096ea3675442027381ff50dfe',
   bot: false,
   system: false,
