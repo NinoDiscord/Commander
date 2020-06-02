@@ -8,7 +8,20 @@
  * @summary A module that helps with integration testing.
  */
 
-import { User, Client, BaseData, ClientOptions } from 'eris';
+import { User, Client, BaseData, ClientOptions, Member, Guild } from 'eris';
+import { defaultUserData, defaultMemberData, defaultGuildData } from './defaults';
+export * from './defaults';
+
+/**
+ * A function that copies data between to objects of the same type.
+ * @param from 
+ * @param to 
+ */
+function copy<T>(from: Partial<T>, to: T) {
+  for (let key in from) {
+    if (from[key]) to[key] = from[key];
+  }
+}
 
 /**
  * Creates a new dummy client.
@@ -22,28 +35,9 @@ import { User, Client, BaseData, ClientOptions } from 'eris';
  */
 export function newClient(client: Partial<Client> = {}, token: string = '', clientOptions: ClientOptions = {}): Client {
   let res: Client = new Client(token, clientOptions);
-  for (let key in client) {
-    if (client[key]) res[key] = client[key];
-  }
+  copy(client, res);
   return res;
 }
-
-
-/**
- * The default user data object for the newUser function.
- * 
- * @constant
- */
-export const defaultUserData = {
-  id: '80351110224678912',
-  username: 'Nelly',
-  discriminator: '1337',
-  avatar: '8342729096ea3675442027381ff50dfe',
-  bot: false,
-  system: false,
-  // eslint-disable-next-line camelcase
-  public_flags: 64
-};
 
 /**
  * Creates a new dummy user object.
@@ -57,8 +51,38 @@ export const defaultUserData = {
  */
 export function newUser(user: Partial<User> = {}, userData: BaseData = defaultUserData, client: Client = newClient()): User {
   let res = new User(userData, client);
-  for (let key in user) {
-    if (user[key]) res[key] = user[key];
-  }
+  copy(user, res);
+  return res;
+}
+
+/**
+ * Creates a new dummy guild object.
+ * 
+ * @param {Partial<Guild>} user A partial guild object to extend the dummy one.
+ * @param {BaseData} userData Optional data to pass to the guild constructor
+ * @param {Client} client Optional Eris client to pass to the guild constructor
+ * @return {User} The dummy guild object.
+ * 
+ * @see {@link https://abal.moe/Eris/docs/Guild|Eris Docs} for more information on the Guild object.
+ */
+export function newGuild(guild: Partial<Guild> = {}, guildData: BaseData = defaultGuildData, client: Client = newClient()): Guild {
+  let res = new Guild(guildData, client);
+  copy(guild, res);
+  return res;
+}
+
+/**
+ * Creates a new dummy member object.
+ * 
+ * @param {Partial<Member>} member A partial member object to extend the dummy one.
+ * @param {BaseData} memberData Optional data to pass to the member constructor
+ * @param {Guild} guild Optional guild to pass to the member constructor
+ * @return {Member} The dummy member object.
+ * 
+ * @see {@link https://abal.moe/Eris/docs/Member|Eris Docs} for more information on the Member object.
+ */
+export function newMember(member: Partial<Member> = {}, memberData: BaseData = defaultMemberData, guild: Guild = newGuild()): Member {
+  let res = new Member(memberData, guild);
+  copy(member, res);
   return res;
 }
