@@ -1,7 +1,7 @@
 import { Member } from 'eris';
 import { newMember, defaultMemberData } from '..';
 
-describe('TestUtils - User', () => {
+describe('TestUtils - Member', () => {
   let member: Member;
 
   it('it should be of type Member', () => {
