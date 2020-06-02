@@ -77,12 +77,13 @@ export function newGuild(guild: Partial<Guild> = {}, guildData: BaseData = defau
  * @param {Partial<Member>} member A partial member object to extend the dummy one.
  * @param {BaseData} memberData Optional data to pass to the member constructor
  * @param {Guild} guild Optional guild to pass to the member constructor
+ * @param {Client} client Optional Eris client to pass to the member constructor
  * @return {Member} The dummy member object.
  * 
  * @see {@link https://abal.moe/Eris/docs/Member|Eris Docs} for more information on the Member object.
  */
-export function newMember(member: Partial<Member> = {}, memberData: BaseData = defaultMemberData, guild: Guild = newGuild()): Member {
-  let res = new Member(memberData, guild);
+export function newMember(member: Partial<Member> = {}, memberData: BaseData = defaultMemberData, guild: Guild = newGuild(), client: Client = newClient()): Member {
+  let res = new Member(memberData, guild /*, client */);
   copy(member, res);
   return res;
 }
