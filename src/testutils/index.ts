@@ -48,7 +48,7 @@ export const defaultUserData = {
 /**
  * Creates a new dummy user object.
  * 
- * @param {Partial<User>} user A partial user object to extend the 
+ * @param {Partial<User>} user A partial user object to extend the dummy one.
  * @param {BaseData} userData Optional data to pass to the user constructor
  * @param {Client} client Optional Eris client to pass to the user constructor
  * @return {User} The dummy user object.
